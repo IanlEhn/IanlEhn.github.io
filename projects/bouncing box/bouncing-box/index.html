@@ -61,9 +61,9 @@
 			//////////////////////////////////////////////////////////////////
 			
 			// TODO 2 - Variable declarations 
-			var positionX = 0;
+			var positionX = 50;
 			var points = 0;
-
+			var speed = 10;
 			
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
@@ -71,11 +71,19 @@
 			turn it around! 
 			*/
 			function update() {
-				positionX = positionX + 10;
+				positionX += speed;
 			moveBoxTo(positionX);
+			if (positionX > boardWidth){
+				speed = speed * -1;
+			
+			} else if (positionX < 0){
+				speed += 6;
+			}
+
+			};
 			//this is the code for updating the frames on the cube.DO NOT TOUCH IAN.
 			
-			};
+			
 
 			/* 
 			This Function will be called each time the box is clicked. Each time it is called,
@@ -83,14 +91,15 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-			positionX = 0;
-
+			positionX = 50;
 			points = points + 1;
-
+			speed += 3;
 			changeBoxText(points);
-//this is the work to make the numbers go up by one. 
+	
+		
 			};
 		})();
 	</script>
 </body>
 </html>
+	
